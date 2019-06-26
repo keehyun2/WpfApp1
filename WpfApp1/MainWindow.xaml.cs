@@ -1,23 +1,11 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Collections.ObjectModel;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfApp1.khphub;
 
 namespace WpfApp1
 {
@@ -27,129 +15,96 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
-        IWebDriver driver;
-
+        EventFiringWebDriver blindDriver;
         public MainWindow()
         {
             InitializeComponent();
-            ChromeOptions op = new ChromeOptions();
-            //op.AddArgument("--headless");
-            driver = new ChromeDriver(op);
+        }
 
-            var firingDriver = new EventFiringWebDriver(driver);
-            firingDriver.ElementClicked += new EventHandler<WebElementEventArgs>(delegate (object sender, WebElementEventArgs e)
-            {
-                try
-                {
-                    System.Console.Write("Clicked on: " + e.Element.ToString());
-                    System.Console.WriteLine("Page title: " + e.Driver.Title);
-                }
-                catch (Exception)
-                {
-                    //System.Console.WriteLine(e.StackTrace);
-                    //throw;
-                }
-                
-            });
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DriverControl dc = new DriverControl();
+            EventFiringWebDriver eventDriver = dc.GetDriver(); // 드라이버 객체 생성 및 클릭 이벤트 세팅
 
-            firingDriver.Navigated += new EventHandler<WebDriverNavigationEventArgs>(delegate (object sender, WebDriverNavigationEventArgs e)
-            {
-                try
-                {
-                    System.Console.Write("Navigated to: " + e.Driver.Url);
-                    System.Console.WriteLine("Page title: " + e.Driver.Title);
-                }
-                catch (Exception)
-                {
-                    //throw;
-                }
-            });
-
-            //firingDriver.ExceptionThrown += new EventHandler<WebDriverExceptionEventArgs>(firingDriver_ExceptionThrown);
-
-            driver = firingDriver;
-
-            driver.Navigate().GoToUrl("https://spib.wooribank.com/pib/Dream?withyou=CMLGN0001");
-            //driver.Navigate().GoToUrl("http://www.khphub.com/bbs/board.php?bo_table=g5_tip&page=");
+            eventDriver.Navigate().GoToUrl("https://spib.wooribank.com/pib/Dream?withyou=CMLGN0001");
+            Thread.Sleep(1000);
+            //dc.Click(eventDriver, By.CssSelector(".pr_log_2"));
+            Thread.Sleep(1000);
+            BringToFront();
+            MessageBox.Show("로그인 해주세요.");
             Thread.Sleep(1000);
 
+            // 로그인 될때까지 대기
             while (true)
             {
                 try
                 {
-                    driver.FindElement(By.CssSelector(".pr_log_2")).Click();
-                    break;
+                    if (eventDriver.FindElement(By.CssSelector(".login-name")).Displayed)
+                    {
+                        System.Console.WriteLine("로그인 성공");
+                        break;
+                    }
                 }
-                catch (UnhandledAlertException)
+                catch (Exception)
                 {
-                    IAlert alert = driver.SwitchTo().Alert();
-                    Console.WriteLine(alert.Text);
-                    alert.Dismiss();
-                    Thread.Sleep(1000);
-                    //throw;
+                    //Console.WriteLine($": '{e}'");
                 }
-                catch (ElementClickInterceptedException e)
-                {
-                    Console.WriteLine(e.StackTrace);
-                    Thread.Sleep(1000);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.StackTrace);
-                    Thread.Sleep(1000);
-                }
+                Thread.Sleep(2000);
             }
 
-            Thread.Sleep(1000);
-            ((IJavaScriptExecutor)driver).ExecuteScript("$('#USER_ID').val('" + "keehyun2" + "');");
-            Thread.Sleep(1000);
-            ((IJavaScriptExecutor)driver).ExecuteScript("$('#PWD').val('" + "asdfdg93" + "');");
-            ((IJavaScriptExecutor)driver).ExecuteScript("$('#PWD').trigger({type: 'keypress', which: 39, keyCode: 39});");
+            //EventFiringWebDriver blindDriver = dc.GetDriver(new String[] { "--headless", "window-size=1920x1080", "disable-gpu" });
+            blindDriver = dc.GetDriver();
 
+            blindDriver.Navigate().GoToUrl("https://www.wooribank.com/");
+
+            ReadOnlyCollection<Cookie> _cookies = eventDriver.Manage().Cookies.AllCookies;
+
+            //WebDriverWait wait = new WebDriverWait(blindDriver, TimeSpan.FromSeconds(60));
+            //wait.Until(ExpectedConditions.AlertIsPresent());
+            //blindDriver.SwitchTo().Alert().Dismiss();
+            //wait = new WebDriverWait(blindDriver, TimeSpan.FromSeconds(60));
+            //wait.Until(ExpectedConditions.AlertIsPresent());
+            //blindDriver.SwitchTo().Alert().Dismiss();
+
+            // blindDriver.Manage().Cookies.DeleteAllCookies();
+            foreach (Cookie item in _cookies)
+            {
+                blindDriver.Manage().Cookies.AddCookie(item);
+            }
             Thread.Sleep(1000);
-            driver.FindElement(By.Id("PWD")).Click();
-            //driver.FindElement(By.Id("PWD")).SendKeys(Keys.ArrowRight);
-            //driver.FindElement(By.Id("id_login")).Click();
-            Console.WriteLine("패스워드 입력완료");
+            blindDriver.Navigate().GoToUrl("https://spib.wooribank.com/pib/Dream?withyou=PSINQ0013"); // 게좌 화면 
+            Thread.Sleep(1000);
+            eventDriver.Quit();
 
-            //Utill.FindElement(driver, By.CssSelector(".pr_log_2"), 3).Click();
-            //Thread.Sleep(1000);
-            //Utill.FindElement(driver, By.Id("USER_ID"), 3).SendKeys("keehyun2");
-            //Thread.Sleep(1000);
-            //Utill.FindElement(driver, By.Id("PWD"), 3).SendKeys("asdfdg93");
+            AccountList.ItemsSource = dc.SetAccountList(blindDriver);
 
-            //var wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
-            //var clickableElement = wait.
+            BringToFront();
+        }
+
+        // 창 앞으로 땡기는 함수 
+        public void BringToFront() {
+            if (!IsVisible)
+            {
+                Show();
+            }
+
+            if (WindowState == WindowState.Minimized)
+            {
+                WindowState = WindowState.Normal;
+            }
+
+            Activate();
+            Topmost = true;  // important
+            Topmost = false; // important
+            Focus();         // important
+        }
+
+        // 계좌 선택 
+        private void AccountList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            blindDriver.Navigate().GoToUrl("https://spib.wooribank.com/pib/Dream?withyou=PSINQ0028"); // 게좌 화면 
             
         }
 
-    }
-
-    public static class WebDriverExtensions
-    {
-        public static IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
-        {
-            if (timeoutInSeconds > 0)
-            {
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
-                return wait.Until(drv => drv.FindElement(by));
-            }
-            return driver.FindElement(by);
-        }
-    }
-
-    public class BankAccount
-    {
-        public String Num { get; set; } // 계좌번호
-        public int Balance { get; set; } // 잔액
-
-        // 조회시간
-        // 입금건수
-        // 입금금액
-        // 출금건수
-        // 출금금액
-        // 건수합계
-        // 금액합계
-        // 처리건수 
-    }
-}
+    } // MainWindow class 끝 
+} // namespace 끝

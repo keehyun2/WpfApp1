@@ -5,17 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="803">
+        Title="MainWindow" Height="403" Width="704">
     <Grid>
-        <!--<ListView Margin="10" Name="lvUsers">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="접속" HorizontalAlignment="Left" Height="25" Margin="5" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+        <ListView Grid.Row="0" Margin="5,35,5,5" x:Name="AccountList" SelectionChanged="AccountList_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
-                    <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}"></GridViewColumn>
-                    <GridViewColumn Header="Mail" Width="200" DisplayMemberBinding="{Binding Mail}"></GridViewColumn>
+                    <GridViewColumn Header="Num" Width="120" DisplayMemberBinding="{Binding Num}"  ></GridViewColumn>
+                    <GridViewColumn Header="Balance" Width="120" DisplayMemberBinding="{Binding Balance}" ></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+
+        <Button Grid.Row="1" Content="TEST" HorizontalAlignment="Left" Height="25" Margin="5" VerticalAlignment="Top" Width="100"  />
+        <!--<ListView Grid.Row="1" Margin="5,35,5,5" x:Name="AccountList2"  SelectionChanged="AccountList_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Num" Width="120" DisplayMemberBinding="{Binding Num}"  ></GridViewColumn>
+                    <GridViewColumn Header="Balance" Width="50" DisplayMemberBinding="{Binding Balance}" ></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>-->
+
+
+
     </Grid>
 
 </Window>

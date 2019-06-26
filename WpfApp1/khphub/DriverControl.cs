@@ -23,7 +23,8 @@ namespace WpfApp1.khphub
             // 크롬 드라이버 설정
             ChromeOptions option = new ChromeOptions();
             // option.AddArgument("--headless");
-            if (optionsParam != null) {
+            if (optionsParam != null)
+            {
                 option.AddArguments(optionsParam);
             }
             driver = new ChromeDriver(option);
@@ -107,9 +108,11 @@ namespace WpfApp1.khphub
 
             foreach (IWebElement el in accList)
             {
-                BankAccount bankAccount = new BankAccount();
-                bankAccount.Num = el.FindElement(By.CssSelector("td:nth-child(2)")).Text;
-                bankAccount.Balance = el.FindElement(By.CssSelector("td:nth-child(4)")).Text;
+                BankAccount bankAccount = new BankAccount
+                {
+                    Num = el.FindElement(By.CssSelector("td:nth-child(2)")).Text,
+                    Balance = el.FindElement(By.CssSelector("td:nth-child(4)")).Text
+                };
                 list.Add(bankAccount);
             }
 

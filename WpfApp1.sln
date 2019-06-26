@@ -5,20 +5,28 @@ VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{6F2AC713-343E-44D0-89C5-878ABD22945E}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{4977FA85-E163-454C-ACA4-FEFE5D532A5D}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuickBank", "QuickBank\QuickBank.vdproj", "{4239F666-09E3-492F-9D16-BD7532E5CD9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Debug|x86.ActiveCfg = Debug|x86
+		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Debug|x86.Build.0 = Debug|x86
 		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4977FA85-E163-454C-ACA4-FEFE5D532A5D}.Debug|Any CPU.ActiveCfg = Debug
-		{4977FA85-E163-454C-ACA4-FEFE5D532A5D}.Release|Any CPU.ActiveCfg = Release
+		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Release|x86.ActiveCfg = Release|x86
+		{6F2AC713-343E-44D0-89C5-878ABD22945E}.Release|x86.Build.0 = Release|x86
+		{4239F666-09E3-492F-9D16-BD7532E5CD9D}.Debug|Any CPU.ActiveCfg = Debug
+		{4239F666-09E3-492F-9D16-BD7532E5CD9D}.Debug|x86.ActiveCfg = Debug
+		{4239F666-09E3-492F-9D16-BD7532E5CD9D}.Release|Any CPU.ActiveCfg = Release
+		{4239F666-09E3-492F-9D16-BD7532E5CD9D}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

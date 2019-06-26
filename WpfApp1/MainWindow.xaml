@@ -16,25 +16,27 @@
         <ListView Grid.Row="0" Margin="5,35,5,5" x:Name="AccountList" SelectionChanged="AccountList_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Num" Width="120" DisplayMemberBinding="{Binding Num}"  ></GridViewColumn>
-                    <GridViewColumn Header="Balance" Width="120" DisplayMemberBinding="{Binding Balance}" ></GridViewColumn>
+                    <GridViewColumn Header="계좌" Width="120" DisplayMemberBinding="{Binding Num}"  ></GridViewColumn>
+                    <GridViewColumn Header="잔액" Width="120" DisplayMemberBinding="{Binding Balance}" ></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
 
-
-
-        <Button Grid.Row="1" Content="TEST" HorizontalAlignment="Left" Height="25" Margin="5" VerticalAlignment="Top" Width="100"  />
-        <!--<ListView Grid.Row="1" Margin="5,35,5,5" x:Name="AccountList2"  SelectionChanged="AccountList_SelectionChanged">
+        <!--<Button Grid.Row="1" Content="TEST" HorizontalAlignment="Left" Height="25" Margin="5,0" VerticalAlignment="Top" Width="100"  />-->
+        <ListView Grid.Row="1" Margin="5,30,5,5" x:Name="PayList" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Num" Width="120" DisplayMemberBinding="{Binding Num}"  ></GridViewColumn>
-                    <GridViewColumn Header="Balance" Width="50" DisplayMemberBinding="{Binding Balance}" ></GridViewColumn>
+                    <GridViewColumn Header="No" Width="120" DisplayMemberBinding="{Binding No}"  ></GridViewColumn>
+                    <GridViewColumn Header="거래일시" Width="120" DisplayMemberBinding="{Binding PayDt}" ></GridViewColumn>
+                    <GridViewColumn Header="적요" Width="120" DisplayMemberBinding="{Binding Briefs}" ></GridViewColumn>
+                    <GridViewColumn Header="송금메모" Width="120" DisplayMemberBinding="{Binding Memo}" ></GridViewColumn>
+                    <GridViewColumn Header="출금액" Width="120" DisplayMemberBinding="{Binding OutAmt}" ></GridViewColumn>
+                    <GridViewColumn Header="입금액" Width="120" DisplayMemberBinding="{Binding InAmt}" ></GridViewColumn>
+                    <GridViewColumn Header="잔액" Width="120" DisplayMemberBinding="{Binding Balance}" ></GridViewColumn>
+                    <GridViewColumn Header="거래점" Width="120" DisplayMemberBinding="{Binding Point}" ></GridViewColumn>
                 </GridView>
             </ListView.View>
-        </ListView>-->
-
-
+        </ListView>
 
     </Grid>
 

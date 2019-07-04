@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuickBank", "QuickBank\QuickBank.vdproj", "{4239F666-09E3-492F-9D16-BD7532E5CD9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turbo", "Turbo\Turbo.csproj", "{797CE6EB-599C-4CB2-9C50-BB9410554137}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TurboCharge", "TurboCharge\TurboCharge.vdproj", "{F6070476-8665-4DD4-B534-902C5BD01575}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,18 @@ Global
 		{4239F666-09E3-492F-9D16-BD7532E5CD9D}.Debug|x86.ActiveCfg = Debug
 		{4239F666-09E3-492F-9D16-BD7532E5CD9D}.Release|Any CPU.ActiveCfg = Release
 		{4239F666-09E3-492F-9D16-BD7532E5CD9D}.Release|x86.ActiveCfg = Release
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Debug|x86.Build.0 = Debug|Any CPU
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Release|x86.ActiveCfg = Release|Any CPU
+		{797CE6EB-599C-4CB2-9C50-BB9410554137}.Release|x86.Build.0 = Release|Any CPU
+		{F6070476-8665-4DD4-B534-902C5BD01575}.Debug|Any CPU.ActiveCfg = Debug
+		{F6070476-8665-4DD4-B534-902C5BD01575}.Debug|x86.ActiveCfg = Debug
+		{F6070476-8665-4DD4-B534-902C5BD01575}.Release|Any CPU.ActiveCfg = Release
+		{F6070476-8665-4DD4-B534-902C5BD01575}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

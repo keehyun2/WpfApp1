@@ -1,0 +1,27 @@
+﻿<Window x:Class="Turbo.turbo.InsertWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Turbo.turbo"
+        mc:Ignorable="d"
+        Title="InsertWindow" Height="552" Width="299">
+    <Grid Margin="0">
+        <StackPanel Margin="5">
+            <Label Content="작업자:" Target="{Binding ElementName=Worker}" />
+            <TextBox Name="Worker" />
+            <Label Content="사업자번호:" Target="{Binding ElementName=CompNum}" />
+            <TextBox Name="CompNum" MaxLength="10" PreviewTextInput="Amt_PreviewTextInput" />
+            <Label Content="금액:" Target="{Binding ElementName=Amt}" />
+            <TextBox Name="Amt" PreviewTextInput="Amt_PreviewTextInput"/>
+            <Label Content="업체명:" Target="{Binding ElementName=Company}" />
+            <TextBox Name="Company" />
+            <Label Content="지급일:" Target="{Binding ElementName=PayDt}" />
+            <Viewbox Stretch="Fill" StretchDirection="UpOnly">
+                <Calendar Margin="0" Name="PayDt"  />
+            </Viewbox>
+            <Button Content="저장" Click="Button_Click" Height="29" Name="BtnSave" />
+            <Button Content="수정" Height="29" Name="BtnModify" Visibility="Collapsed" />
+        </StackPanel>
+    </Grid>
+</Window>
